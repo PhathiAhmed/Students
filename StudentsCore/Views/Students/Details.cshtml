@@ -1,0 +1,118 @@
+﻿@model StudentsCore.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h2 style="color:seagreen">Details</h2>
+
+
+@*<div>
+        <h4>Student</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateBirth)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateBirth)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Sex)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sex)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+        </dl>
+    </div>*@
+<div>
+    <h4 style="color: seagreen">Student Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-muted">
+            student's Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="text-primary">
+            student's Age
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt class="text-info">
+            student's Birth Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBirth)
+        </dd>
+
+        <dt class="text-warning">
+            student's Gender
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt class="text-danger">
+            student's Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt class="text-success">
+            student's Image
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/@(Model.Image)" class="img-thumbnail " style="height :70px; width:100px" />
+        </dd>
+
+    </dl>
+</div>
+<div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-info">
+         <i class="icofont-ui-edit"></i>
+        Edit
+        </a> 
+
+        <a asp-action="Index" class="btn btn-success">
+            <i class="icofont-home"></i>
+            Home
+        </a>
+    </div>
+

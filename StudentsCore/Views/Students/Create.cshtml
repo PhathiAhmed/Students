@@ -1,0 +1,64 @@
+﻿@model StudentsCore.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2 class="text-success" style="margin-top:30px">Fill Your Application</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label text-muted"></label>
+                <input asp-for="Name" class="form-control" placeholder="Please add name here" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label text-primary"></label>
+                <input asp-for="Age" class="form-control" placeholder="Please add age here" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateBirth" class="control-label text-info"></label>
+                <input asp-for="DateBirth" class="form-control" />
+                <span asp-validation-for="DateBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label text-warning"></label>
+                @*@Html.DropDownListFor(m => m.Sex,
+                new SelectList(Enum.GetValues(typeof(Gender))),
+                "--Select Gender--", new { @class = "form-control my-2" })*@
+                <select asp-for="Sex" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                    <option>--Select Gender--</option>
+                </select>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label text-danger"></label>
+                <textarea asp-for="Address" class="form-control" placeholder="Please add address here" ></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label text-success"></label>
+                <input type="file" name="File" asp-for="Image" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-success my-2">
+                <i class="icofont-save"></i>
+                Save
+            </button>
+
+            <a asp-action="Index" class="btn btn-info">
+                <i class="icofont-ui-close"></i>
+                Cancel
+            </a>
+        </form>
+    </div>
+
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

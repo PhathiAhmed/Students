@@ -1,0 +1,106 @@
+﻿@model IEnumerable<StudentsCore.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-success">
+    <i class="bi bi-people-fill"></i>
+    All-Students
+</h2>
+
+<a asp-action="Create" class="btn btn-outline-success my-4">
+    <i class="icofont-ui-add"></i>
+    Add New Student
+</a>
+@*<div class="alert alert-danger @(Model.Any()? "d-none" : "")">
+    No Students Yet!!
+</div>*@
+<table class="table table-bordered  table-striped">
+    <thead>
+        <tr class="bg-success ">
+            <th class="text-center">
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                student's Name
+            </th>
+            <th class="text-center">
+                @*@Html.DisplayNameFor(model => model.Age)*@
+                student's Age
+            </th>
+            <th class="text-center">
+                @*@Html.DisplayNameFor(model => model.DateBirth)*@
+                Student's date of birth
+            </th>
+            <th class="text-center">
+                @*@Html.DisplayNameFor(model => model.Sex)*@
+                student's Gender
+            </th>
+            <th class="text-center">
+                @*@Html.DisplayNameFor(model => model.Address)*@
+                student's Adress
+            </th>
+            <th class="text-center">
+                student's Image
+            </th>
+            <th class="text-center align-middle">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center align-middle table-active">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="text-center align-middle table-primary">
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td class="text-center align-middle table-info">
+                    @Html.DisplayFor(modelItem => item.DateBirth)
+                </td>
+                <td class="text-center align-middle table-warning">
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td class="text-center align-middle table-danger">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <img src="~/Uploads/@(item.Image)" class="img-thumbnail rounded mx-auto d-block" style="height :70px; width:100px" />
+                </td>
+                <td class="btn-group table-active">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info my-2 ">
+                        <i class="icofont-ui-edit"></i>
+                        @*Edit*@
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary my-2 ">
+                        <i class="icofont-info-circle"></i>
+                        @*Details*@
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger my-2 ">
+                        <i class="icofont-ui-delete"></i>
+                        @*Delete*@
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            if ($('tbody tr').length === 1)
+                $('table').fadeOut(function () {
+                    this.remove();
+                    $('.alert').removeClass('d-none');
+                });
+        })
+    </script>
+}*@
+
+
+
+
